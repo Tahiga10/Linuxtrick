@@ -1,0 +1,13 @@
+Modifier /etc/resolv.conf. Dans une fenêtre de terminal
+
+sudo vi /etc/resolv.conf
+et ajouter la ligne "nameserver 8.8.8.8"
+
+ping www.google.com
+Si cela réussit, lancez les commandes suivantes
+
+sudo apt-get --download-only --reinstall install resolvconf
+sudo dpkg --purge --force-depends resolvconf
+sudo apt-get install resolvconf
+
+Si la résolution échoue maintenant, cliquez avec le bouton droit sur l'indicateur de réseau dans la barre en haut du bureau, cliquez sur Edit Connections, sélectionnez votre connexion, Cliquez sur Edit| IPv4 Settings. Changer de méthode de Automatic (DHCP)à Automatic (DHCP) addresses onlyet entrer 8.8.8.8dans le Additional DNS serverschamp. Cliquez sur Save.... Vérifiez que /etc/resolv.confcontient maintenant une ligne nameserver 8.8.8.8et que vous pouvez toujours ping www.google.com.
